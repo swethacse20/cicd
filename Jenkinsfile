@@ -42,7 +42,8 @@ pipeline {
             steps {
                 // Pull Docker image from Docker Hub
                 script {
-                    docker.pull('swetha328/myhtmlapp:1')
+                   docker.withRegistry('', 'dockerhub') {
+                        docker.image('swetha328/myhtmlapp:1').pull()
                 }
             }
         }
