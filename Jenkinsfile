@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout code from Git repository
-                git 'https://github.com/swethacse20/registration.git'
+                git 'https://github.com/swethacse20/cicd.git'
             }
         }
 
