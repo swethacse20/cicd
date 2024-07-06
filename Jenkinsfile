@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define Docker Hub credentials ID
-        DOCKERHUB_CREDENTIALS = 'docker-hub-credentials'
+        DOCKERHUB_CREDENTIALS = 'dockerhub'
         // Define Docker image details
         DOCKER_IMAGE = 'swetha328/myhtmlapp'
         // Define Docker container name
@@ -31,7 +31,7 @@ pipeline {
             steps {
                 // Push Docker image to Docker Hub
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'DOCKERHUB_CREDENTIALS') {
+                    docker.withRegistry('https://hub.docker.com', 'DOCKERHUB_CREDENTIALS') {
                         docker.image("${DOCKER_IMAGE}:${BUILD_NUMBER}").push()
                     }
                 }
