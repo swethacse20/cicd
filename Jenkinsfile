@@ -67,5 +67,12 @@ pipeline {
         failure {
             echo 'Pipeline failed :('
         }
+        always {
+            script {
+                sh "docker stop mycontainer || true"
+                sh "docker rm mycontainer || true"
+                sh "docker rmi swetha328/myhtmlapp:1 || true"
+            }
+        }
     }
 }
