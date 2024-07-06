@@ -46,8 +46,8 @@ pipeline {
                         docker.image('swetha328/myhtmlapp:1').pull()
                 }
             }
+          }
         }
-
         stage('Run') {
             steps {
                 // Run Docker container
