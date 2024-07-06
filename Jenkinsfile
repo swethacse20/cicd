@@ -42,7 +42,7 @@ pipeline {
             steps {
                 // Pull Docker image from Docker Hub
                 script {
-                    docker.pull("${DOCKER_IMAGE}:${BUILD_NUMBER}")
+                    docker.pull('swetha328/myhtmlapp:1')
                 }
             }
         }
@@ -51,7 +51,7 @@ pipeline {
             steps {
                 // Run Docker container
                 script {
-                    docker.run("${DOCKER_IMAGE}:${BUILD_NUMBER}", '--name ${CONTAINER_NAME} -d -p 8080:80')
+                    docker.run('swetha328/myhtmlapp:1', '--name ${CONTAINER_NAME} -d -p 8080:80')
                 }
             }
         }
