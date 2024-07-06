@@ -31,8 +31,8 @@ pipeline {
             steps {
                 // Push Docker image to Docker Hub
                 script {
-                    docker.withRegistry('https://hub.docker.com', 'DOCKERHUB_CREDENTIALS') {
-                        docker.image("${DOCKER_IMAGE}:${BUILD_NUMBER}").push()
+                    docker.withRegistry('', 'dockerhub') {
+                        docker.image('swetha328/myhtmlapp:1').push('1')
                     }
                 }
             }
