@@ -67,13 +67,5 @@ pipeline {
         failure {
             echo 'Pipeline failed :('
         }
-        always {
-            // Clean up: remove Docker containers and images
-            script {
-                docker.stop(CONTAINER_NAME)
-                docker.remove(CONTAINER_NAME)
-                docker.image("${DOCKER_IMAGE}:${BUILD_NUMBER}").remove()
-            }
-        }
     }
 }
