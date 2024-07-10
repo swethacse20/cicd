@@ -5,7 +5,7 @@ pipeline {
         // Define Docker Hub credentials ID
         DOCKERHUB_CREDENTIALS = 'dockerhub'
         // Define Docker image details
-        DOCKER_IMAGE = 'swetha328/myhtmlapp'
+        DOCKER_IMAGE = 'swetha328/myhtmlapp1'
         // Define Docker container name
         CONTAINER_NAME = 'mycontainer'
     }
@@ -32,7 +32,7 @@ pipeline {
                 // Push Docker image to Docker Hub
                 script {
                     docker.withRegistry('', 'dockerhub') {
-                        docker.image('swetha328/myhtmlapp:1').push('1')
+                        docker.image('swetha328/myhtmlapp1:1').push('1')
                     }
                 }
             }
@@ -43,7 +43,7 @@ pipeline {
                 // Pull Docker image from Docker Hub
                 script {
                    docker.withRegistry('', 'dockerhub') {
-                        docker.image('swetha328/myhtmlapp:1').pull()
+                        docker.image('swetha328/myhtmlapp1:1').pull()
                 }
             }
           }
@@ -53,7 +53,7 @@ pipeline {
                 // Run Docker container
                script {
                     docker.withRegistry('', 'dockerhub') {
-                        docker.image('swetha328/myhtmlapp:1').run('-d -p 8080:80 --name mycontainer')
+                        docker.image('swetha328/myhtmlapp1:1').run('-d -p 8084:80 --name mycontainer')
                     }
                 }
             }
@@ -71,7 +71,7 @@ pipeline {
             script {
                 sh "docker stop mycontainer || true"
                 sh "docker rm mycontainer || true"
-                sh "docker rmi swetha328/myhtmlapp:1 || true"
+                sh "docker rmi swetha328/myhtmlapp1:1 || true"
             }
         }
     }
