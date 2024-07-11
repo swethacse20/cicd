@@ -32,7 +32,7 @@ pipeline {
                 // Push Docker image to Docker Hub
                 script {
                     docker.withRegistry('', 'dockerhub') {
-                        docker.image('swetha328/myhtmlapp1:1').push('1')
+                        docker.image('swetha328/myhtmlapp1:6').push()
                     }
                 }
             }
@@ -43,7 +43,7 @@ pipeline {
                 // Pull Docker image from Docker Hub
                 script {
                    docker.withRegistry('', 'dockerhub') {
-                        docker.image('swetha328/myhtmlapp1:1').pull()
+                        docker.image('swetha328/myhtmlapp1:6').pull()
                 }
             }
           }
@@ -53,7 +53,7 @@ pipeline {
                 // Run Docker container
                script {
                     docker.withRegistry('', 'dockerhub') {
-                        docker.image('swetha328/myhtmlapp1:1').run('-d -p 8084:80 --name mycontainer')
+                        docker.image('swetha328/myhtmlapp1:6').run('-d -p 8084:80 --name mycontainer')
                     }
                 }
             }
