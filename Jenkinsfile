@@ -71,7 +71,7 @@ pipeline {
             script {
                 sh "docker stop mycontainer || true"
                 sh "docker rm mycontainer || true"
-                sh "docker rmi swetha328/myhtmlapp1:1 || true"
+                sh "docker rmi swetha328/myhtmlapp1:6 || true"
             }
         }
     }
