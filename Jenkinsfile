@@ -69,9 +69,9 @@ pipeline {
         }
         always {
             script {
-                sh "docker stop mycontainer || true"
-                sh "docker rm mycontainer || true"
-                sh "docker rmi swetha328/myhtmlapp1 || true"
+                sh "docker stop ${CONTAINER_NAME} || true"
+                sh "docker rm ${CONTAINER_NAME} || true"
+                sh "docker rmi ${DOCKER_IMAGE} || true"
             }
         }
     }
