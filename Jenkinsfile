@@ -53,7 +53,7 @@ pipeline {
                 // Run Docker container
                script {
                     docker.withRegistry('', 'dockerhub') {
-                        docker.image('swetha328/myhtmlapp1').run('-d -p 8084:80 --name mycontainer')
+                        docker.image('swetha328/myhtmlapp1').run('-d -p 8089:80 --name mycontainer')
                     }
                 }
             }
