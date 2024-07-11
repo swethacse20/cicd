@@ -22,7 +22,7 @@ pipeline {
             steps {
                 // Build Docker image
                 script {
-                    docker.build("${DOCKER_IMAGE}:${BUILD_NUMBER}")
+                    docker.build("${DOCKER_IMAGE}")
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
                 // Push Docker image to Docker Hub
                 script {
                     docker.withRegistry('', 'dockerhub') {
-                        docker.image('swetha328/myhtmlapp1:6').push()
+                        docker.image('swetha328/myhtmlapp1').push()
                     }
                 }
             }
@@ -43,7 +43,7 @@ pipeline {
                 // Pull Docker image from Docker Hub
                 script {
                    docker.withRegistry('', 'dockerhub') {
-                        docker.image('swetha328/myhtmlapp1:6').pull()
+                        docker.image('swetha328/myhtmlapp1').pull()
                 }
             }
           }
@@ -53,7 +53,7 @@ pipeline {
                 // Run Docker container
                script {
                     docker.withRegistry('', 'dockerhub') {
-                        docker.image('swetha328/myhtmlapp1:6').run('-d -p 8084:80 --name mycontainer')
+                        docker.image('swetha328/myhtmlapp1').run('-d -p 8084:80 --name mycontainer')
                     }
                 }
             }
@@ -71,7 +71,7 @@ pipeline {
             script {
                 sh "docker stop mycontainer || true"
                 sh "docker rm mycontainer || true"
-                sh "docker rmi swetha328/myhtmlapp1:6 || true"
+                sh "docker rmi swetha328/myhtmlapp1 || true"
             }
         }
     }
